@@ -1,0 +1,11 @@
+.layout {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 20% 60% 20%;
+  gap: 20px;
+  /* background-color: red; */
+}
+.layout > div {
+  background-color: blue;
+  text-align: center;
+}

@@ -1,7 +1,7 @@
 
 # Proyecto web
 
-Bienvenidos a nustro proyecto ....
+Bienvenidos a nuestro proyecto ....
 
 
 

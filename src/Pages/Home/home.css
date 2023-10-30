@@ -1,0 +1,12 @@
+#contenedor-cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    justify-content: space-between;
+    overflow-y: scroll;
+    height: 400px;
+}
+
+.card{
+    width: calc((100% / 2) - 10px);
+}

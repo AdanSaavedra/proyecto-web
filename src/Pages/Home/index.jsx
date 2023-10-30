@@ -1,20 +1,72 @@
-import { useState } from "react";
 import Navbar from "../../Components/Navbar";
 import Layout from "../../Components/Layout";
 import Card from "../../Components/Card";
+import "./home.css";
 
 const Home = () => {
-  const [cosas, setCosas] = useState(["12", '20', '22'])//info de las cards.
-  
-  const updateCosas = (value) => {
-    setCosas()
-  }; 
 
-  async function getCards() {
-    const response = await fetch("http://localhost:3001/cards");
-    const data = await response.json();
-    console.log(data);
-  }
+  const data = [
+    {
+      inicio: "12-10-2023.",
+      final: "14-10-2023.",
+      descripcion: "Urgencia.",
+      motivo: "Necesitaba ir a hacer algo.",
+    },
+    {
+      inicio: "12-10-2023.",
+      final: "14-10-2023.",
+      descripcion: "Urgencia.",
+      motivo: "Necesitaba ir a hacer algo.",
+    },
+    {
+      inicio: "12-10-2023.",
+      final: "14-10-2023.",
+      descripcion: "Urgencia.",
+      motivo: "Necesitaba ir a hacer algo.",
+    },
+    {
+      inicio: "12-10-2023.",
+      final: "14-10-2023.",
+      descripcion: "Urgencia.",
+      motivo: "Necesitaba ir a hacer algo.",
+    },
+    {
+      inicio: "12-10-2023.",
+      final: "14-10-2023.",
+      descripcion: "Urgencia.",
+      motivo: "Necesitaba ir a hacer algo.",
+    },
+    {
+      inicio: "12-10-2023.",
+      final: "14-10-2023.",
+      descripcion: "Urgencia.",
+      motivo: "Necesitaba ir a hacer algo.",
+    },
+    {
+      inicio: "12-10-2023.",
+      final: "14-10-2023.",
+      descripcion: "Urgencia.",
+      motivo: "Necesitaba ir a hacer algo.",
+    },
+    {
+      inicio: "12-10-2023.",
+      final: "14-10-2023.",
+      descripcion: "Urgencia.",
+      motivo: "Necesitaba ir a hacer algo.",
+    },
+    {
+      inicio: "12-10-2023.",
+      final: "14-10-2023.",
+      descripcion: "Urgencia.",
+      motivo: "Necesitaba ir a hacer algo."
+    },
+    {
+      inicio: "12-10-2023.",
+      final: "14-10-2023.",
+      descripcion: "Urgencia.",
+      motivo: "Necesitaba ir a hacer algo."
+    }
+  ];
 
   return (
     <>
@@ -22,7 +74,12 @@ const Home = () => {
       <Layout>
         <div>testing1</div>
         <div>
-          <Card cosas={cosas}/>
+          <div id="contenedor-cards">
+            {data.map((item, index) => (
+              <Card key={index} cosas={item} />
+              ))
+            }
+          </div>
         </div>
         <div>testing3</div>
       </Layout>

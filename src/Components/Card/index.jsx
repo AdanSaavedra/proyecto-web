@@ -1,16 +1,19 @@
 import PropTypes from "prop-types"; // Import prop-types
-
+import {FcCalendar} from "react-icons/fc";
 import "./card.css";
+import Status from "../buttons/Status/index.jsx";
 
 const Card = ({ cosas }) => {
-  const { inicio, final, descripcion, motivo} = cosas;
+  const { inicio, final, descripcion, motivo, status} = cosas;
 
   return (
     <div className="card">
-        <p>Motivo: {descripcion}</p>
-        <p>Inicio: {inicio}</p>
-        <p>Final:  {final}</p>
-        <p>Descripcion: {motivo}</p>
+      <FcCalendar className="icon"/>
+      <p className="info" id="motivo"><b>{descripcion}</b></p>
+      <p className="info date"><b>Inicio:</b> {inicio}</p>
+      <p className="info date"><b>Final:</b>  {final}</p>
+      <p className="info" id="desc"><b>Descripcion:</b> {motivo}</p>
+      <Status className="status" prop={status}/>
     </div>
   );
 }
@@ -21,6 +24,7 @@ Card.propTypes = {
     final: PropTypes.string.isRequired,
     descripcion: PropTypes.string.isRequired,
     motivo: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
   }).isRequired,
 };
 

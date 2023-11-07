@@ -1,0 +1,39 @@
+.card{
+    position: relative;
+    width: 617px;
+    height: 187px;
+    border-radius: 30px;
+    background: #FFF;
+}
+.info{
+    color: #000;
+    font-size: 18px;
+    font-weight: 400;   
+    text-align: left;
+    margin: 5px 0 0 30px;
+}
+#motivo{
+    color: #000;
+    font-size: 22px;
+    margin-top: 15px;
+}
+.date{
+    margin: 0 0 0 30px;
+}
+#desc{
+    width: 200px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;  
+    -webkit-box-orient: vertical;
+}
+.icon{
+    width: 100px;
+    height: 100px;
+    margin: 15px 0 0 60px;
+    position: absolute;
+}
+.status{
+    position: absolute;
+    margin: -10% 0 0 67%;
+}

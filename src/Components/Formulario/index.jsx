@@ -41,11 +41,12 @@ const Formulario = () => {
                     <select name="motivo" id="motivo" required>
                         <option value="Urgencia">Urgencia</option>
                         <option value="Personal">Personal</option>
+                        <option value="Vacaciones">Vacaciones</option>
                         <option value="Otro">Otro</option>
                     </select>
                 </div>
-                <button type="submit" id="submit">Enviar</button>
-            </form>
+                <button type="submit" id="submit">Solicitar</button>
+            </form>     
         </div>
     )
 }

@@ -112,7 +112,7 @@ const Home = () => {
           <Rechazados/>
         </div>
         <div>
-          <Formulario/>
+          <Formulario className="formulario"/>
           <div id="contenedor-cards">
             {data.map((item, index) => (
               <Card key={index} cosas={item} />

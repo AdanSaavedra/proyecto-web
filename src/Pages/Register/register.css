@@ -1,0 +1,160 @@
+/*Contenedor que ocupa toda la pantalla y actua como filtro oscuro para el fondo*/
+.main {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: transparent;
+    background-image: radial-gradient(#00000022 30%, #000000dd);
+    z-index: 0;
+}
+/*Imagen de fondo*/
+.bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+h2 {
+    text-shadow: 1px 1px #00000055;
+}
+/*Contenedor blanco del formulario*/
+.form {
+    display: grid;
+    place-items: center;
+    padding: 1rem 3rem;
+    background-color: #f5f5f7;
+    border: solid 1px #1d1d1f;
+    border-radius: 30px;
+    width: 600px;
+    height: 390px;
+    z-index: +1;
+}
+form {
+    width: 100%;
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+}
+.form div {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    margin: 10px 0 5px 0;
+    font-weight: 600;
+}
+input {
+    background-color: #fff;
+    border: solid 1px #1d1d1f;
+    border-radius: 16px;
+    padding: 5px 10px;
+}
+/*Se ajusta la posicion del contenedor de contraseña y confrimar contraseña*/
+.password {
+    transform: translateY(-60px);
+}
+.password div {
+    margin: 0;
+}
+/*Se alinea el boton a la derecha*/
+.aceptar {
+    align-items: end;
+}
+button {
+    font-weight: 600;
+    letter-spacing: 2px;
+    background-color: transparent;
+    border: solid 2px #1d1d1f;
+    box-shadow: 2px 2px 5px #00000055;
+    width: 130px;
+    border-radius: 16px;
+    padding: 5px 10px;
+    margin-top: 5px;
+    transition: .2s;
+    z-index: +1;
+}
+button:hover {
+    scale: 1.07;
+    background-color: #1d1d1f;
+    color: #f5f5f7;
+}
+button:active {
+    scale: 1.02;
+}
+/*Estilo cuando el boton no esta habilitado*/
+button:disabled {
+    border: solid 2px #929292;
+    color: #929292;
+    box-shadow: none;
+}
+button:disabled:hover {
+    scale: 1;
+    background-color: transparent;
+    color: 929292;
+}
+button:disabled:active {
+    scale: 1;
+}
+/*Se ajusta la posicion del texto final y el boton en el form*/
+.form_end {
+    transform: translateY(-30px);
+}
+.texto{
+    transform: translateY(0);
+    text-align: left;
+    font-weight: 500;
+    font-size: 14px;
+}
+/*Se ajusta el color del link a Iniciar Sesion*/
+.form_end a {
+    font-weight: normal;
+    text-decoration: none;
+    color: #E1CAA9;
+    text-shadow: .5px 1px #b3a088;
+    letter-spacing: 2px;
+}
+/*Mensaje de error*/
+.error-message {
+    color: #ff0000; 
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+/*Responsive*/
+@media (max-width: 720px) {
+    /*Barra lateral*/
+    .form::-webkit-scrollbar {
+        width: 5px;
+        background-color: #929292cc;
+    }
+    .form::-webkit-scrollbar-thumb {
+        background-color: #1d1d1fcc;
+        border-radius: 20px;
+    }
+    /*Dimensiones del form*/
+    .form {
+        width: calc(100% - 60px);
+        height: 60%;
+        padding: 20px;
+        border-radius: 30px 0 0 30px;
+        overflow-y: scroll;
+    }
+    form {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    label {
+        margin-top: 5px;
+    }
+    form div {
+        margin: 0;
+    }
+    .password {
+        transform: translateY(0);
+    }
+    .texto {
+        transform: translateY(10px);
+    }
+}

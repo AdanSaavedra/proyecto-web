@@ -7,7 +7,7 @@ const Formulario = () => {
     const [endDate, setEndDate] = useState('');
 
     const handleStartDateChange = (event) => {
-        if (new Date(event.target.value) < new Date()) {
+        if (new Date(event.target.value) <= new Date()) {
             alert('La fecha de inicio no puede ser menor a la fecha actual');
         }else{
             setStartDate(event.target.value);
@@ -15,7 +15,7 @@ const Formulario = () => {
     };
 
     const handleEndDateChange = (event) => {
-        if (new Date(event.target.value) < new Date(startDate)) {
+        if (new Date(event.target.value) <= new Date(startDate)) {
             alert('La fecha final no puede ser menor a la fecha de inicio');
         } else {
             setEndDate(event.target.value);
@@ -38,7 +38,7 @@ const Formulario = () => {
                 </div>
                 <div>
                     <label htmlFor="motivo" className="label-sol">Motivo</label><br/>
-                    <select name="motivo" id="motivo" required>
+                    <select name="motivo" id="motivo-form" required>
                         <option value="Urgencia">Urgencia</option>
                         <option value="Personal">Personal</option>
                         <option value="Vacaciones">Vacaciones</option>

@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import React, { useState } from 'react';
 import './signin.css';
 
@@ -58,15 +59,15 @@ const handleSubmit = (event) => {
 //Formulario
   return (
     //Filtro de imagen de fondo
-    <div className={'main'}>
+    <div className={'signin_main'}>
       {/*Imagen de fondo*/}
-      <img src='src/Pages/Images/Background1.png' className={'bg'} />
-      <div className={'form'}>
+      <img src='src/Pages/Images/Background1.png' className={'signin_bg'} />
+      <div className={'signin_form_container'}>
         {/*Titulo*/}
         <h2>Inicio de Sesión</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={'signin_form'}>
           {/*Usuario*/}
-          <div className={'user'}>
+          <div className={'signin_user'}>
             <label>Usuario:</label>
             <input
               type='text'
@@ -78,7 +79,7 @@ const handleSubmit = (event) => {
             />
           </div>
           {/*Contrasenia*/}
-          <div className={'pasword'}>
+          <div className={'signin_pasword'}>
             <label>Contraseña:</label>
             <input
               type='password'
@@ -90,16 +91,16 @@ const handleSubmit = (event) => {
             />
           </div>
           {/*Boton y link de ir a registro*/}
-          <div className={'form_end'}>
+          <div className={'signin_form_end'}>
             {/*Boton*/}
-            <div className={'aceptar'}>
+            <div className={'signin_aceptar'}>
               <button type='submit' className={isButtonDisabled ? 'disabled' : ''} disabled={isButtonDisabled}>Iniciar Sesión</button>
             </div>
             {/*Ir a registro*/}
-            <div className={'texto'}>
+            <div className={'signin_texto'}>
               <p>
               ¿No tienes una cuenta? <br></br>
-              <a href='/Register'>Regístrate aquí.</a>
+              <NavLink to={'/register'}>Regístrate aquí.</NavLink>
               </p>
             </div>
           </div>

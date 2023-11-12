@@ -1,5 +1,6 @@
+import { NavLink } from "react-router-dom";
+import "./register.css";
 import React, { useState } from 'react';
-import './register.css';
 
 const RegistrationForm = () => {
   const [firstName, setFirstName] = useState('');
@@ -70,12 +71,12 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div className={'main'}>
-      <img src='src/Pages/Images/Background1.png' className={'bg'} />
-      <div className={'form'}>
+    <div className={'register_main'}>
+      <img src='src/Pages/Images/Background1.png' className={'register_bg'} />
+      <div className={'register_form_container'}>
         <h2>Registro de Usuario</h2>
-        <form onSubmit={handleSubmit}>
-          <div className={'user'}>
+        <form onSubmit={handleSubmit} className={'register_form'}>
+          <div className={'register_user'}>
             <label>Nombre:</label>
             <input
               type='text'
@@ -86,7 +87,7 @@ const RegistrationForm = () => {
               required
             />
           </div>
-          <div className={'user'}>
+          <div className={'register_user'}>
             <label>Apellido:</label>
             <input
               type='text'
@@ -97,7 +98,7 @@ const RegistrationForm = () => {
               required
             />
           </div>
-          <div className={'user'}>
+          <div className={'register_user'}>
             <label>Usuario:</label>
             <input
               type='text'
@@ -108,7 +109,7 @@ const RegistrationForm = () => {
               required
             />
           </div>
-          <div className={'usertype'}>
+          <div className={'register_usertype'}>
             <label>Tipo de Usuario:</label>
             <div className="radio-group">
               <label>
@@ -135,7 +136,7 @@ const RegistrationForm = () => {
               </label>
             </div>
           </div>
-          <div className={'password'}>
+          <div className={'register_password'}>
             <div className={`pw ${passwordError ? 'error' : ''}`}>
             <label>Contraseña:</label>
               <input
@@ -158,13 +159,13 @@ const RegistrationForm = () => {
                 required
               />
             </div>
-            {errorMessage && <div className="error-message">{errorMessage}</div>}
+            {errorMessage && <div className="register_error-message">{errorMessage}</div>}
           </div>
-          <div className={'form_end'}>
-            <div className={'texto'}>
-              <p>¿Ya tienes una cuenta? <br></br><a href='/SignIn'>Inicia sesión.</a></p>
+          <div className={'register_form_end'}>
+            <div className={'register_texto'}>
+              <p>¿Ya tienes una cuenta? <br></br><NavLink to={'/'}>Inicia sesión.</NavLink></p>
             </div>
-            <div className={'aceptar'}>
+            <div className={'register_aceptar'}>
               <button type='submit' className={isButtonDisabled ? 'disabled' : ''} disabled={isButtonDisabled}>Registrarse</button>
             </div>
           </div>

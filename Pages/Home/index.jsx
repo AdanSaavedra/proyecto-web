@@ -2,12 +2,9 @@ import Navbar from "../../Components/Navbar";
 import Layout from "../../Components/Layout";
 import Card from "../../Components/Card";
 import "./home.css";
-import Historial from "../../Components/buttons/Historial/index.jsx";
-import Solicitudes from "../../Components/buttons/Solicitar/index.jsx";
-import Aceptados from "../../Components/buttons/Aceptados/index.jsx";
-import Espera from "../../Components/buttons/En_espera";
-import Rechazados from "../../Components/buttons/Rechazados";
 import Formulario from "../../Components/Formulario/index.jsx";
+import { useState } from 'react';
+import Butt from "../../Components/buttons/Button/index.jsx";
 
 const Home = () => {
 
@@ -98,29 +95,49 @@ const Home = () => {
     }
   ];
 
+  const [show, setShow] = useState(true);
+
+  const opciones = (value) => {
+    if (value === 1) {
+      setShow(true);
+    } else if (value === 2) {
+      setShow(false);
+    }
+  };
+
   return (
     <>
       <Navbar />
       <div className="container-buttons">
-        <Solicitudes/>
-        <Historial/>
+        <Butt newclass="big-buttons soli" prop="Solicitar dia libre" value={1} click={opciones} />
+        <Butt newclass="big-buttons hist" prop="Historial de solicitudes" value={2} click={opciones} />
       </div>
-      <Layout>
-        <div className="buttons">
-          <Espera/>
-          <Aceptados/>
-          <Rechazados/>
-        </div>
-        <div>
-          <Formulario className="formulario"/>
-          <div id="contenedor-cards">
-            {data.map((item, index) => (
-              <Card key={index} cosas={item} />
-              ))
-            }
-          </div>
-          <div className="bottom-fade"></div>
-        </div>
+      <Layout className={'layout'}>
+        {show ? (
+          <>
+            <div></div>
+            <div>
+              <Formulario className="formulario" />
+            </div>
+            <div></div>
+          </>
+        ) : (
+          <>
+            <div className="buttons">
+              <Butt prop="En espera" newclass="en-espera" />
+              <Butt prop="Aceptados" newclass="aceptados" />
+              <Butt prop="Rechazados" newclass="rechazados" />
+            </div>
+            <div>
+              <div id="contenedor-cards">
+                {data.map((item, index) => (
+                  <Card key={index} cosas={item} />
+                ))}
+              </div>
+              <div className="bottom-fade"></div>
+            </div>
+          </>
+        )}
       </Layout>
     </>
   );

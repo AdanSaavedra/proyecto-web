@@ -112,13 +112,12 @@ const Home = () => {
         <Butt newclass="big-buttons soli" prop="Solicitar dia libre" value={1} click={opciones} />
         <Butt newclass="big-buttons hist" prop="Historial de solicitudes" value={2} click={opciones} />
       </div>
-      <Layout>
+      <Layout className={'layout'}>
         {show ? (
           <>
             <div></div>
             <div>
               <Formulario className="formulario" />
-              <div className="bottom-fade"></div>
             </div>
             <div></div>
           </>

@@ -1,5 +1,5 @@
 /*Contenedor que ocupa toda la pantalla y actua como filtro oscuro para el fondo*/
-.main {
+.register_main {
     width: 100vw;
     height: 100vh;
     display: grid;
@@ -9,7 +9,7 @@
     z-index: 0;
 }
 /*Imagen de fondo*/
-.bg {
+.register_bg {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -20,7 +20,7 @@ h2 {
     text-shadow: 1px 1px #00000055;
 }
 /*Contenedor blanco del formulario*/
-.form {
+.register_form_container {
     display: grid;
     place-items: center;
     padding: 1rem 3rem;
@@ -31,13 +31,13 @@ h2 {
     height: 390px;
     z-index: +1;
 }
-form {
+.register_form {
     width: 100%;
     display: grid;
     column-gap: 20px;
     grid-template-columns: 1fr 1fr;
 }
-.form div {
+.register_form div {
     display: flex;
     flex-direction: column;
 }
@@ -52,14 +52,14 @@ input {
     padding: 5px 10px;
 }
 /*Se ajusta la posicion del contenedor de contraseña y confrimar contraseña*/
-.password {
-    transform: translateY(-60px);
+.register_password {
+    transform: translateY(-30px);
 }
-.password div {
+.register_password div {
     margin: 0;
 }
 /*Se alinea el boton a la derecha*/
-.aceptar {
+.register_aceptar {
     align-items: end;
 }
 button {
@@ -97,18 +97,14 @@ button:disabled:hover {
 button:disabled:active {
     scale: 1;
 }
-/*Se ajusta la posicion del texto final y el boton en el form*/
-.form_end {
-    transform: translateY(-30px);
-}
-.texto{
-    transform: translateY(0);
+/*Se ajusta la posicion del texto final en el form*/
+.register_texto{
     text-align: left;
     font-weight: 500;
     font-size: 14px;
 }
 /*Se ajusta el color del link a Iniciar Sesion*/
-.form_end a {
+.register_form_end a {
     font-weight: normal;
     text-decoration: none;
     color: #E1CAA9;
@@ -116,7 +112,7 @@ button:disabled:active {
     letter-spacing: 2px;
 }
 /*Mensaje de error*/
-.error-message {
+.register_error-message {
     color: #ff0000; 
     font-size: 14px;
     margin-top: 5px;
@@ -125,36 +121,36 @@ button:disabled:active {
 /*Responsive*/
 @media (max-width: 720px) {
     /*Barra lateral*/
-    .form::-webkit-scrollbar {
+    .register_form_container::-webkit-scrollbar {
         width: 5px;
         background-color: #929292cc;
     }
-    .form::-webkit-scrollbar-thumb {
+    .register_form_container::-webkit-scrollbar-thumb {
         background-color: #1d1d1fcc;
         border-radius: 20px;
     }
     /*Dimensiones del form*/
-    .form {
+    .register_form_container {
         width: calc(100% - 60px);
         height: 60%;
         padding: 20px;
         border-radius: 30px 0 0 30px;
         overflow-y: scroll;
     }
-    form {
+    .register_form {
         grid-template-columns: 1fr;
         gap: 0;
     }
     label {
         margin-top: 5px;
     }
-    form div {
+    .register_form div {
         margin: 0;
     }
-    .password {
+    .register_password {
         transform: translateY(0);
     }
-    .texto {
+    .register_texto {
         transform: translateY(10px);
     }
 }

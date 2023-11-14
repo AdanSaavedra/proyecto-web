@@ -9,9 +9,9 @@
 .form-sol-cont{
     display: flex;
     flex-wrap: wrap;
-    padding-left: 30px;
+    padding-left: 0px;
 }
-.form-sol-cont div{
+.form-sol-cont > div{
     width: calc((100% / 2) - 10px);
 }
 .form-sol{
@@ -40,8 +40,8 @@
     word-wrap: break-all;
 }
 #motivo-form{
-    width: 303px;
-    height: 45px;
+    width: 320px !important;
+    height: 55px !important;
     border-radius: 30px;
     border: 1.5px solid #293331;
     background: #FBFBFB;

@@ -3,7 +3,8 @@
     font-family: DM Sans;
 }
 body{
-    background: #E1CAA9;
+    background-color: #000;
+    background-image: linear-gradient(to right, #E1CAA9cc 10px, #E1CAA9 20%, #E1CAA9 calc(100% - 20%), #E1CAA9cc calc(100% - 10px));
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -12,7 +13,7 @@ body{
 .container-buttons{
     display: flex;
     justify-content: space-evenly; 
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -20,36 +21,37 @@ body{
     display: flex;
     flex-wrap: wrap;
     margin-top: 60px;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 20px;
     overflow-y: scroll;
+    overflow-x: hidden;
     height: 400px;
     row-gap: 20px;
     padding: 0 20px 0 20px;
 }
+
+/*Barra lateral*/
 #contenedor-cards::-webkit-scrollbar {
-    width: 18px;
+    width: 5px;
+    background-color: #f5f5f7;
 }
 #contenedor-cards::-webkit-scrollbar-thumb {
-    background: #908888;
-    border-radius: 30px;    
+    background-color: #1d1d1fcc;
+    border-radius: 20px;
 }
-#contenedor-cards::-webkit-scrollbar-track {
-    background: white;
-    border-radius: 30px;
-}   
 .card{
     width: calc((100% / 2) - 10px);
 }
 .bottom-fade {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    transform: translateY(-95%) translateX(-10px);
+    z-index: +1;
     width: 100%;
-    height: 40px;
-    background: linear-gradient(to top, rgba(240, 240, 240, 0.6), rgba(240, 240, 240, 0));
+    height: 70%;
+    background: linear-gradient(to bottom, #E1CAA9 1%, #E1CAA900 15%, #E1CAA900 80%, #E1CAA9 99%);
     pointer-events: none;
 }
 .buttons{
+    width: 100%;
     display: flex;
     flex-direction: column;
     row-gap: 20px;
@@ -58,4 +60,46 @@ body{
 }
 .formulario{
     margin-top: 50px;
+}
+
+.big-buttons{
+    width: 320px !important;
+    height: 40px !important;
+    font-size: 1.2rem !important;
+}
+.btn-header.activo {
+    background-color: red;
+    font-size: 100px;
+}
+
+@media (max-width:720px) {
+    body {
+        background-image: linear-gradient(#E1CAA9, #E1CAA9);
+    }
+    .big-buttons {
+        width: 120px !important;
+        height: 60px !important;
+        font-size: 1rem !important;
+    }
+    .buttons {
+        margin-top: 20px;
+        display: block;
+    }
+    .formulario {
+        margin: 10px;
+    }
+    #contenedor-cards {
+        margin: 10px;
+    }
+    .buttons button {
+        margin-right: 10px;
+    }
+    .bottom-fade {
+        transform: translateY(-100%);
+        height: 100%;
+    }
+    .layout {
+        grid-template-rows: 18% 1fr 1fr; 
+        grid-template-columns: 1fr;
+    }
 }

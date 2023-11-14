@@ -1,67 +1,95 @@
 .formulario{
-    position: relative;
-    width: 728px;
-    height: 396px;
+    display: flex;
+    padding: 20px 20px 20px 0;
+    min-width: 400px;
+    height: 350px;
+    border: solid 1px #1d1d1f;
     border-radius: 30px;
     background: #F5F5F7;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .form-sol-cont{
-    display: flex;
-    flex-wrap: wrap;
-    padding-left: 0px;
+    display: grid;
+    width: 100%;
+    place-items: top;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 30% 70%;
+    column-gap: 40px;
+    padding: 0 20px;
 }
-.form-sol-cont > div{
-    width: calc((100% / 2) - 10px);
+.form-sol-cont div{
+    width: 100%;
 }
 .form-sol{
-    width: 303px;
-    height: 45px;
-    border-radius: 30px;
-    border: 1.5px solid #293331;
-    background: #FBFBFB;
+    width: 100%;
 }
 .label-sol{
+    width: 100%;
     display: inline-block;
     color: #000;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    margin: 10px 0 10px 0;
+    margin: 10px;
 }
 #descripcion{
-    width: 303px;
-    height: 211px;
-    border-radius: 30px;
+    width: 100%;
+    height: 75%;
+    border-radius: 5px;
     border: 1.5px solid #293331;
     background: #FBFBFB;
-    overflow: auto;
-    word-wrap: break-all;
+    vertical-align: top;
+    overflow-x: auto;
+    white-space: normal;
+    padding: 10px;
+    resize: none;
+}
+/*Barra lateral de textarea*/
+#descripcion::-webkit-scrollbar {
+    width: 5px;
+    background-color: #929292cc;
+}
+#descripcion::-webkit-scrollbar-thumb {
+    background-color: #1d1d1fcc;
+    border-radius: 20px;
 }
 #motivo-form{
-    width: 320px !important;
-    height: 55px !important;
-    border-radius: 30px;
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 20px;
     border: 1.5px solid #293331;
     background: #FBFBFB;
     margin: 0;
 }
-#submit{
-    width: 180px;
-    height: 37px;
-    border-radius: 30px;
-    background-color: #293331;
-    color: #FFF;
-    text-align: center;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    position: absolute;
-    margin: 43% 0 0 58%;
+#submit_cont{
+    display: grid;
+    height: 67%;
+    place-items: end;
+    place-items: bottom;
+}
+
+@media (max-width:720px) {
+    .formulario {
+        min-width: 200px;
+    }
+    .form-sol-cont {
+        grid-template-columns: 1fr;
+        grid-template-rows: 30% 30% 70% 30%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        padding: 10px 30px 10px 10px;
+    }
+    #descripcion {
+        height: 65%;
+    }
+    /*Barra lateral*/
+    .form-sol-cont::-webkit-scrollbar {
+        width: 5px;
+        background-color: #929292cc;
+    }
+    .form-sol-cont::-webkit-scrollbar-thumb {
+        background-color: #1d1d1fcc;
+        border-radius: 20px;
+    }
 }

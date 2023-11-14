@@ -1,10 +1,11 @@
 .layout {
   display: grid;
   height: 100%;
+  width: 100vw;
   grid-template-columns: 20% 60% 20%;
-  gap: 20px;
-  /* background-color: red; */
+  /*background-color: red; */
 }
 .layout > div {
+  /*border: 1px solid rebeccapurple;*/
   text-align: center;
 }

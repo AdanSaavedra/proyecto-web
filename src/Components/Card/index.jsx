@@ -8,12 +8,19 @@ const Card = ({ cosas }) => {
 
   return (
     <div className="card">
-      <FcCalendar className="icon"/>
-      <p className="info" id="motivo"><b>{descripcion}</b></p>
-      <p className="info date"><b>Inicio:</b> {inicio}</p>
-      <p className="info date"><b>Final:</b>  {final}</p>
-      <p className="info" id="desc"><b>Descripcion:</b> {motivo}</p>
-      <Status className="status" prop={status}/>
+      <div>
+        <p className="info" id="motivo"><b>{descripcion}</b></p>
+        <p className="info date"><b>Inicio:</b> {inicio}</p>
+        <p className="info date"><b>Final:</b>  {final}</p>
+        <p className="info" id="desc"><b>Descripcion:</b> {motivo}</p>
+      </div>
+      <div>
+        <FcCalendar className="icon"/>
+        <div className={'status-cont'}>
+          <Status className="status" prop={status}/>
+        </div>
+      </div>
+      
     </div>
   );
 }

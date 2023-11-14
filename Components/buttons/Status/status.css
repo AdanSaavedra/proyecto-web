@@ -1,0 +1,16 @@
+.status {
+    width: 70px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #293331;
+    color: #f5f5f7;
+    text-align: center;
+    font-size: 6px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}

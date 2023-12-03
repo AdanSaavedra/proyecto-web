@@ -37,7 +37,11 @@ Para poder ejecutar el proyecto en localhost, realiza los siguientes comandos
   npm run dev
 ```
 
+* para el back end lo que se hara es lo siguiente
+* el file backend lo van a poner en htdocs en su xaamp
+* listo, disfruten
 
+* ademas importar la base de datos
 ## Authors
 
 - [@ChristopherDiaz](https://www.github.com/yussef2603)

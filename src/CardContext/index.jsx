@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import {createContext, useContext, useState } from "react";
 
 const CardContext = React.createContext();
 
@@ -9,13 +9,14 @@ function CardProvider({ children }) {
   const handleModal = () => {
     setOpenModal((element) => !element);
   };
-  const ModalData = (inicio, fin, motivo, descripcion, estado) => {
+  const ModalData = (inicio, fin, motivo, descripcion, estado, nombre) => {
     setModalData({
       inicio: inicio,
       fin: fin,
       motivo: motivo,
       desc: descripcion,
       stat: estado,
+      nombre: nombre,
     });
   };
   return (
@@ -28,3 +29,34 @@ function CardProvider({ children }) {
 }
 
 export { CardContext, CardProvider };
+const UserContext = createContext();
+
+ const UserProvider = ({ children }) => {
+  const [userId, setUserId] = useState(null);
+  const [ userName, setUsername] = useState(null);
+
+  const login = (id, namme) => {
+    setUserId(id);
+    setUsername(namme);
+  };
+
+  const logout = () => {
+    setUserId(null);
+    setUsername(null);
+  };
+
+  return (
+    <UserContext.Provider value={{ userId, login, logout, userName }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
+
+const useUser = () => {
+  const context = useContext(UserContext);
+  if (!context) {
+    throw new Error('useUser must be used within a UserProvider');
+  }
+  return context;
+};
+export {UserContext ,useUser, UserProvider };

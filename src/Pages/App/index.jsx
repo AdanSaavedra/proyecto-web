@@ -5,6 +5,7 @@ import "./App.css";
 import RegistrationForm from "../Register/index.jsx";
 import LoginForm from "../SignIn/index.jsx";
 import { CardProvider } from "../../CardContext/";
+import { UserProvider } from '../../CardContext';
 
 const AppRoutes = () => {
   let Routes = useRoutes([
@@ -17,11 +18,14 @@ const AppRoutes = () => {
 };
 
 function App() {
-  return (
-    <BrowserRouter>
-      <CardProvider>
-        <AppRoutes />
-      </CardProvider>
+  return(
+  <BrowserRouter>
+      {/* Envuelve tu aplicación con ambos proveedores */}
+      <UserProvider>
+        <CardProvider>
+          <AppRoutes />
+        </CardProvider>
+      </UserProvider>
     </BrowserRouter>
   );
 }

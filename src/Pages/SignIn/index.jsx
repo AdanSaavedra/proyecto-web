@@ -1,8 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
 import './signin.css';
+import { useUser } from '../../CardContext';
+
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+  const { login } = useUser();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -26,8 +30,35 @@ const checkFields = (username, password) => {
   }
 };
 
-const handleSubmit = (event) => {
+const handleSubmit = async (event) => {
   event.preventDefault();
+  try {
+    const response = await fetch('http://localhost/backend/login_process.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
+    });
+
+    const data = await response.json();
+    console.log('Response:', data);
+
+    // handling de la respuesta del script
+    if (response.ok) {
+      const userId = data.userId;
+      const userName = data.name
+      login(userId, userName);
+      console.log('Login successful');
+      console.log('UserId:', userId , userName);
+      navigate('/home');
+    } else {
+      console.error('Login failed:', data);
+      // no se que poner si hay un error xd aqui va un mensaje de error ej "usuario incorrecto, credenciales incorrectas"
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
   console.log("Iniciar sesión con:", username, password);
 };
 

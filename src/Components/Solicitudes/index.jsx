@@ -3,10 +3,19 @@ import Butt from "../buttons/Button";
 import { Modal } from "../../Modal";
 import DetalleSolicitud from "../DetalleSolicitud";
 import { CardContext } from "../../CardContext";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 
 const Solicitudes = () => {
   const context = useContext(CardContext);
+  const [historial, setHistorial] = useState([]);
+  const [filter, setFilter] = useState('En espera');
+  useEffect(() => {
+    // Hacer la solicitud a la API para obtener el historial de solicitudes
+    fetch('http://localhost/backend/historial_api.php')
+      .then(response => response.json())
+      .then(data => setHistorial(data))
+      .catch(error => console.error('Error fetching historial:', error));
+  }, []);
   const data = [
     {
       inicio: "12-10-2023.",
@@ -97,14 +106,15 @@ const Solicitudes = () => {
   return (
     <>
       <div className="buttons">
-        <Butt prop="En espera" newclass="en-espera" />
-        <Butt prop="Aceptados" newclass="aceptados" />
-        <Butt prop="Rechazados" newclass="rechazados" />
+
+        <Butt prop="En espera" newclass="en-espera" click={() => setFilter('En espera')} />
+        <Butt prop="Aceptados" newclass="aceptados" click={() => setFilter('Aceptado')} />
+        <Butt prop="Rechazados" newclass="rechazados" click={() => setFilter('Rechazado')} />
       </div>
       <div>
-        <div id="contenedor-cards">
-          {data.map((item, index) => (
-            <Card key={index} cosas={item} />
+      <div id="contenedor-cards">
+          {historial.map((item, index) => (
+            item.status === filter && <Card key={index} cosas={item} />
           ))}
         </div>
         <div className="bottom-fade"></div>

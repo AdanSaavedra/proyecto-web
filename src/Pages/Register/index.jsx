@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./register.css";
 import React, { useState } from 'react';
 
@@ -13,6 +13,9 @@ const RegistrationForm = () => {
   const [passwordError, setPasswordError] = useState(false); // Variable para manejar errores en el campo de contraseña
   const [confirmPasswordError, setConfirmPasswordError] = useState(false); // Variable para manejar errores en el campo de confirmar contraseña
   const [errorMessage, setErrorMessage] = useState('');
+
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
+  const navigate = useNavigate();
 
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
@@ -52,16 +55,44 @@ const RegistrationForm = () => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-  
     if (password !== confirmPassword) {
       setErrorMessage('Las contraseñas no coinciden.');
       //Se agregan las clases de error a los campos de contraseña
       setPasswordError(true);
       setConfirmPasswordError(true);
     } else {
-      //Se maneja el envío de datos del formulario al servidor
+      
+  try {
+    const response = await fetch('http://localhost/backend/signup_process.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `name=${encodeURIComponent(firstName)}&lastname=${encodeURIComponent(lastName)}&username=${encodeURIComponent(username)}&contraseña=${encodeURIComponent(password)}&Type=${encodeURIComponent(userType)}`,
+    });
+
+    if (response.ok) { 
+      const data = await response.json();
+
+      if (data.status === 'success') {
+        console.log('Registro exitoso');
+        setRegistrationSuccess(true);
+        setTimeout(() => {
+          navigate('/');
+        }, 3000);
+      } else {
+        console.error('Error de registro:', data.message);
+        // Manejar el error de registro, por ejemplo, mostrar un mensaje de error
+      }
+    } else {
+      console.error('Error de red:', response.status, response.statusText);
+      // Manejar errores de red, por ejemplo, mostrar un mensaje de error general
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
       console.log("Registrarse con:", firstName, lastName, username, userType, password, confirmPassword);
       setErrorMessage(''); //Se lmpia el mensaje de error si las contraseñas coinciden
       //Se quitan las clases de error de los campos de contraseña
@@ -73,6 +104,12 @@ const RegistrationForm = () => {
   return (
     <div className={'register_main'}>
       <img src='src/Pages/Images/Background1.png' className={'register_bg'} />
+      {/* Alerta de éxito de registro */}
+      {registrationSuccess && (
+        <div className={'registration-success-alert'}>
+          <p>Registro exitoso. Serás redirigido a la página de inicio de sesión enseguida!!!.</p>
+        </div>
+      )}     
       <div className={'register_form_container'}>
         <h2>Registro de Usuario</h2>
         <form onSubmit={handleSubmit} className={'register_form'}>

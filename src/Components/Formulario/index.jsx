@@ -1,8 +1,10 @@
 import "./formulario.css"
 import { useState } from 'react';
-    
+import { useUser } from '../../CardContext'
+ 
 const Formulario = () => {
-
+    const { userId } = useUser();
+    console.log('userId:', userId);
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -34,9 +36,43 @@ const Formulario = () => {
         }
     };
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+       
+        console.log('Cuerpo de la solicitud:', JSON.stringify({
+            Motivo: event.target.motivo.value,
+            Fecha_inicio: startDate,
+            Fecha_Final: endDate,
+            descripcion: event.target.descripcion.value,
+            userId: userId,
+        }));
+        try {
+            const response = await fetch('http://localhost/backend/solicitud_proceso.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `Motivo=${encodeURIComponent(event.target.motivo.value)}&Fecha_inicio=${encodeURIComponent(startDate)}&Fecha_Final=${encodeURIComponent(endDate)}&descripcion=${encodeURIComponent(event.target.descripcion.value)}&userId=${encodeURIComponent(userId)}`,
+
+                })
+        
+                const data = await response.json();
+                console.log('response', data)
+
+                if (response.ok){
+                    console.log('Solicitud realizada correctamente');  
+                }
+                 else {
+                    console.error('Error al realizar la solicitud:', data.message);
+                }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+    
     return (
         <div className="formulario">
-            <form className="form-sol-cont">
+            <form className="form-sol-cont" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="inicio" className="label-sol">Fecha de inicio</label> <br/>
                     <input type="date" id="inicio" name="inicio" className="form-sol" value={startDate} onChange={handleStartDateChange} required/>
@@ -47,7 +83,7 @@ const Formulario = () => {
                 </div>
                 <div>
                     <label htmlFor="descripcion" className="label-sol">Descripcion</label><br/>
-                    <textarea id="descripcion" name="descripcion" className="form-sol" required/>
+                    <textarea id="descripcion" name="descripcion" className="form-sol"  required/>
                 </div>
                 <div>
                     <label htmlFor="motivo" className="label-sol">Motivo</label><br/>

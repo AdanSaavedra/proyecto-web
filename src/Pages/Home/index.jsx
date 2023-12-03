@@ -5,7 +5,6 @@ import Formulario from "../../Components/Formulario/index.jsx";
 import { useState } from "react";
 import Butt from "../../Components/buttons/Button/index.jsx";
 import Solicitudes from "../../Components/Solicitudes/index.jsx";
-
 const Home = () => {
   const [show, setShow] = useState(true);
 
@@ -16,6 +15,8 @@ const Home = () => {
       setShow(false);
     }
   };
+
+
 
   return (
     <>

@@ -1,5 +1,5 @@
 import React from "react";
-import {createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const CardContext = React.createContext();
 
@@ -31,9 +31,9 @@ function CardProvider({ children }) {
 export { CardContext, CardProvider };
 const UserContext = createContext();
 
- const UserProvider = ({ children }) => {
+const UserProvider = ({ children }) => {
   const [userId, setUserId] = useState(null);
-  const [ userName, setUsername] = useState(null);
+  const [userName, setUsername] = useState(null);
 
   const login = (id, namme) => {
     setUserId(id);
@@ -59,4 +59,4 @@ const useUser = () => {
   }
   return context;
 };
-export {UserContext ,useUser, UserProvider };
+export { UserContext, useUser, UserProvider };

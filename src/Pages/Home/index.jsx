@@ -7,29 +7,34 @@ import Butt from "../../Components/buttons/Button/index.jsx";
 import Solicitudes from "../../Components/Solicitudes/index.jsx";
 const Home = () => {
   const [show, setShow] = useState(true);
+  const [button1, setButton1] = useState("highlighted");
+  const [button2, setButton2] = useState("");
 
   const opciones = (value) => {
     if (value === 1) {
       setShow(true);
+      setButton1("highlighted");
+      setButton2("");
     } else if (value === 2) {
       setShow(false);
+      setButton1("");
+      setButton2("highlighted");
     }
   };
-
-
-
+  console.log("button1:", button1);
+  console.log("button2:", button2);
   return (
     <>
       <Navbar />
       <div className="container-buttons">
         <Butt
-          newclass="big-buttons soli"
+          newclass={`big-buttons ${button1}`}
           prop="Solicitar dia libre"
           value={1}
           click={opciones}
         />
         <Butt
-          newclass="big-buttons hist"
+          newclass={`big-buttons ${button2}`}
           prop="Historial de solicitudes"
           value={2}
           click={opciones}

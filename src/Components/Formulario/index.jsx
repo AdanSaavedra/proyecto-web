@@ -8,7 +8,7 @@ const Formulario = () => {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-
+    
     const handleStartDateChange = (event) => {
         if (new Date(event.target.value) <= new Date()) {
             alert('La fecha de inicio no puede ser menor a la fecha actual');

@@ -10,6 +10,9 @@ body{
     overflow-x: hidden;
     overflow-y: hidden;
 }
+#nohay{
+    margin-top: 150px;
+}
 .container-buttons{
     display: flex;
     justify-content: space-evenly; 
@@ -70,6 +73,10 @@ body{
 .btn-header.activo {
     background-color: red;
     font-size: 100px;
+}
+.highlighted{
+    background-color: #1d1d1f;
+    color: #f5f5f7;
 }
 
 @media (max-width:720px) {

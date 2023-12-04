@@ -1,10 +1,16 @@
 import "./button.css";
 import PropTypes from "prop-types";
 import React from 'react';
+import setFilter from "../../Solicitudes";
 
-const Butt = ({ prop, newclass, value, click }) => {
+const Butt = ({ prop, newclass, value, click, setfil }) => {
   const handleClick = () => {
-    click(value);
+    if (value > 2){
+      click(value);
+      setfil(value);
+    }else{
+      click(value);
+    }
   };
 
   return (

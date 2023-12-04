@@ -20,7 +20,6 @@ const AppRoutes = () => {
 function App() {
   return(
   <BrowserRouter>
-      {/* Envuelve tu aplicación con ambos proveedores */}
       <UserProvider>
         <CardProvider>
           <AppRoutes />

@@ -35,6 +35,7 @@ const handleSubmit = async (event) => {
   try {
     const response = await fetch('http://localhost/backend/login_process.php', {
       method: 'POST',
+      credentials: 'include', 
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
@@ -47,7 +48,7 @@ const handleSubmit = async (event) => {
     // handling de la respuesta del script
     if (response.ok) {
       const userId = data.userId;
-      const userName = data.name
+      const userName = data.username
       login(userId, userName);
       console.log('Login successful');
       console.log('UserId:', userId , userName);
@@ -61,31 +62,6 @@ const handleSubmit = async (event) => {
   }
   console.log("Iniciar sesión con:", username, password);
 };
-
-/* INTENTO FALLIDO DE CONECTAR A PHP
-//Para enviar los datos al servidor
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      const response = await fetch('src/Pages/SignIn/signin.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
-      });
-
-      const data = await response.json();
-      console.log(data); //Prueba para ver si funciona
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-*/
 
 //Formulario
   return (

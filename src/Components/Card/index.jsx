@@ -8,13 +8,13 @@ import { CardContext } from "../../CardContext/index.jsx";
 const Card = ({ cosas }) => {
   const context = useContext(CardContext);
 
-  const { inicio, final, descripcion, motivo, status } = cosas;
+  const { inicio, final, descripcion, motivo, status, nombre } = cosas;
 
   return (
     <div
       onClick={() => {
         context.handleModal();
-        context.ModalData(inicio, final, motivo, descripcion, status);
+        context.ModalData(inicio, final, motivo, descripcion, status, nombre);
       }}
       className="card"
     >
@@ -49,6 +49,7 @@ Card.propTypes = {
     descripcion: PropTypes.string.isRequired,
     motivo: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
+    nombre: PropTypes.string.isRequired,
   }).isRequired,
 };
 

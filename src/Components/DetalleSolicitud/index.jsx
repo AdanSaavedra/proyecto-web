@@ -10,9 +10,8 @@ const DetalleSolicitud = () => {
       <h1 className="title">Detalle de Solicitud</h1>
       <section className="infoSection">
         <div className="motivoCard">
-          <p>
-          <span  className="nombre"></span>
-          {context.modalData.nombre}
+          <p className="nombrecard">
+            {context.modalData.nombre}
           </p>
           <p>
             <span className="cardTags">Motivo: </span>

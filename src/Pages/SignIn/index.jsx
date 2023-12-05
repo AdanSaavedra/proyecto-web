@@ -49,9 +49,10 @@ const handleSubmit = async (event) => {
     if (response.ok) {
       const userId = data.userId;
       const userName = data.username
-      login(userId, userName);
+      const type = data.type;
+      login(userId, userName, type);
       console.log('Login successful');
-      console.log('UserId:', userId , userName);
+      console.log('UserId:', userId , userName, type);
       navigate('/home');
     } else {
       console.error('Login failed:', data);

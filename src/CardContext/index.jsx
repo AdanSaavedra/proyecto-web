@@ -34,10 +34,12 @@ const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const [userId, setUserId] = useState(null);
   const [userName, setUsername] = useState(null);
+  const [type, setType] = useState(null);
 
-  const login = (id, namme) => {
+  const login = (id, namme, type) => {
     setUserId(id);
     setUsername(namme);
+    setType(type);
   };
 
   const logout = () => {
@@ -46,7 +48,7 @@ const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ userId, login, logout, userName }}>
+    <UserContext.Provider value={{ userId, login, logout, userName, type }}>
       {children}
     </UserContext.Provider>
   );

@@ -6,11 +6,13 @@ const CardContext = React.createContext();
 function CardProvider({ children }) {
   const [openModal, setOpenModal] = useState(false);
   const [modalData, setModalData] = useState({});
+  const [historial, setHistorial] = useState([]);
   const handleModal = () => {
     setOpenModal((element) => !element);
   };
-  const ModalData = (inicio, fin, motivo, descripcion, estado, nombre) => {
+  const ModalData = (id, inicio, fin, motivo, descripcion, estado, nombre) => {
     setModalData({
+      id: id,
       inicio: inicio,
       fin: fin,
       motivo: motivo,
@@ -21,7 +23,15 @@ function CardProvider({ children }) {
   };
   return (
     <CardContext.Provider
-      value={{ openModal, setOpenModal, handleModal, modalData, ModalData }}
+      value={{
+        openModal,
+        setOpenModal,
+        handleModal,
+        modalData,
+        ModalData,
+        historial,
+        setHistorial,
+      }}
     >
       {children}
     </CardContext.Provider>
@@ -29,6 +39,7 @@ function CardProvider({ children }) {
 }
 
 export { CardContext, CardProvider };
+
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
@@ -57,7 +68,7 @@ const UserProvider = ({ children }) => {
 const useUser = () => {
   const context = useContext(UserContext);
   if (!context) {
-    throw new Error('useUser must be used within a UserProvider');
+    throw new Error("useUser must be used within a UserProvider");
   }
   return context;
 };

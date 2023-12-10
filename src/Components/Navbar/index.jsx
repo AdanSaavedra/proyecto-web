@@ -9,9 +9,9 @@ const Navbar = () => {
   if (userName !== null) {
     const getcookie = () => {
       let cookie = document.cookie
-        .split('; ')
-        .find(row => row.startsWith(userName))
-        .split('=')[1];
+        ?.split('; ')
+        ?.find(row => row?.startsWith(userName))
+        ?.split('=')[1];
       return cookie;
     }
     cookie = getcookie();

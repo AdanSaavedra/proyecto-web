@@ -8,13 +8,14 @@ import { CardContext } from "../../CardContext/index.jsx";
 const Card = ({ cosas }) => {
   const context = useContext(CardContext);
 
-  const { inicio, final, descripcion, motivo, status, nombre } = cosas;
+
+  const { id, inicio, final, descripcion, motivo, status, nombre } = cosas;
 
   return (
     <div
       onClick={() => {
         context.handleModal();
-        context.ModalData(inicio, final, motivo, descripcion, status, nombre);
+        context.ModalData(id, inicio, final, motivo, descripcion, status, nombre);
       }}
       className="card"
     >

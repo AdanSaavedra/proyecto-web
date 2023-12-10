@@ -5,8 +5,9 @@ import DetalleSolicitud from "../DetalleSolicitud";
 import { CardContext } from "../../CardContext";
 import { useContext, useState, useEffect } from "react";
 
-const Solicitudes = () => {
+const Historial = () => {
   const context = useContext(CardContext);
+  const [filter, setFilter] = useState("En espera");
   const [button3, setButton3] = useState("highlighted");
   const [button4, setButton4] = useState("");
   const [button5, setButton5] = useState("");
@@ -17,6 +18,8 @@ const Solicitudes = () => {
       .then((data) => context.setHistorial(data))
       .catch((error) => console.error("Error fetching historial:", error));
   }, []);
+  // Filtrar las solicitudes por estado
+  const filteredHistorial = context.historial.filter((item) => item.status === filter);
 
   const opciones = (value) => {
     if (value === 3) {
@@ -61,10 +64,10 @@ const Solicitudes = () => {
       </div>
       <div>
         <div id="contenedor-cards">
-          {context.historial.length === 0 && (
-            <p id="nohay">No hay solicitudes</p>
+          {filteredHistorial.length === 0 && (
+            <p id="nohay">No hay solicitudes {filter}</p>
           )}
-          {context.historial.map((item, index) => (
+          {filteredHistorial.map((item, index) => (
             <Card key={index} cosas={item} />
           ))}
         </div>
@@ -79,4 +82,4 @@ const Solicitudes = () => {
   );
 };
 
-export default Solicitudes;
+export default Historial;

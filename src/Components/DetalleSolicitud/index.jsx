@@ -9,7 +9,7 @@ const DetalleSolicitud = () => {
   const { type } = useUser();
   const actualizarEstado = (nuevoEstado, idSolicitud) => {
     fetch(
-      `http://localhost:8000/actualizar_estado.php?nuevo_estado=${nuevoEstado}&id_solicitud=${idSolicitud}`
+      `http://localhost:80/backend/actualizar_estado.php?nuevo_estado=${nuevoEstado}&id_solicitud=${idSolicitud}`
     )
       .then((response) => response.text())
       .then((data) => {
@@ -99,7 +99,7 @@ const DetalleSolicitud = () => {
             </button>
             <button
               onClick={() => {
-                actualizarEstado(4, context.modalData.id);
+                actualizarEstado(0, context.modalData.id);
                 context.handleModal();
               }}
             >

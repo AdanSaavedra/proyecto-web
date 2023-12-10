@@ -32,7 +32,7 @@ const LoginForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://localhost:8000/login_process.php", {
+      const response = await fetch("http://localhost:80/backend/login_process.php", {
         method: "POST",
         credentials: "include",
         headers: {

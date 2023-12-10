@@ -13,7 +13,7 @@ const Historial = () => {
   const [button5, setButton5] = useState("");
   useEffect(() => {
     // Hacer la solicitud a la API para obtener el historial de solicitudes
-    fetch("http://localhost:8000/historial_api.php")
+    fetch("http://localhost:80/backend/historial_api.php")
       .then((response) => response.json())
       .then((data) => context.setHistorial(data))
       .catch((error) => console.error("Error fetching historial:", error));

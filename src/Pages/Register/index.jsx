@@ -121,7 +121,7 @@ const RegistrationForm = () => {
     } else {
       try {
         const response = await fetch(
-          "http://localhost:8000/signup_process.php",
+          "http://localhost:80/backend/signup_process.php",
           {
             method: "POST",
             headers: {

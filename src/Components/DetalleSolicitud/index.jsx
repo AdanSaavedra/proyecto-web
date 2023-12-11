@@ -15,6 +15,8 @@ const DetalleSolicitud = () => {
       .then((data) => {
         console.log(data); // Maneja la respuesta del servidor como desees
         // Actualiza tu estado local o realiza acciones adicionales si es necesario
+        context.setSuccessMessage("Estado actualizado con éxito");
+        context.handleModal(); // Cierra el modal
       })
       .catch((error) => {
         console.error("Error al actualizar el estado:", error);

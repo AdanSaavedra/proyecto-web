@@ -34,6 +34,7 @@ const Solicitudes = () => {
       setButton4("");
       setButton5("highlighted");
     }
+
   };
 
   return (

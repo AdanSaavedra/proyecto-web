@@ -21,6 +21,9 @@ function CardProvider({ children }) {
       nombre: nombre,
     });
   };
+  const clearSuccessMessage = () => {
+    setSuccessMessage("");
+  };
   return (
     <CardContext.Provider
       value={{

@@ -8,6 +8,26 @@
     background-image: radial-gradient(#00000022 30%, #000000dd);
     z-index: 0;
 }
+/* Estilo para mensajes de éxito */
+.login-success-alert {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 3px; 
+    margin-top: 7px;
+    border-radius: 4px;
+    font-size: 8px; 
+  }
+  
+  /* Estilo para mensajes de error */
+  .login-error-message {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+  }
 /*Imagen de fondo*/
 .signin_bg {
     position: absolute;

@@ -9,6 +9,8 @@ const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [loginError, setLoginError] = useState(null);
+  const [loginSuccess, setLoginSuccess] = useState(false);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -54,13 +56,20 @@ const LoginForm = () => {
         login(userId, userName, type);
         console.log("Login successful");
         console.log("UserId:", userId, userName, type);
-        navigate("/home");
+        setLoginSuccess(true);
+        setLoginError(null);
+        setTimeout(() => {
+          navigate("/home");
+        }, 3000);
       } else {
         console.error("Login failed:", data);
-        // no se que poner si hay un error xd aqui va un mensaje de error ej "usuario incorrecto, credenciales incorrectas"
+        setLoginError("Usuario o contraseña incorrectos");
+        setLoginSuccess(false);
       }
     } catch (error) {
       console.error("Error:", error);
+      setLoginError("Error al iniciar sesión. Inténtalo de nuevo más tarde.");
+      setLoginSuccess(false);
     }
     console.log("Iniciar sesión con:", username, password);
   };
@@ -99,6 +108,13 @@ const LoginForm = () => {
               required
             />
           </div>
+           {/* Mensajes de éxito y error */}
+           {loginSuccess && (
+            <div className={"registration-success-alert"}>
+              <p>Login exitoso. Redirigiendo...</p>
+            </div>
+          )}
+          {loginError && <div className="register_error-message">{loginError}</div>}
           {/*Boton y link de ir a registro*/}
           <div className={"signin_form_end"}>
             {/*Boton*/}

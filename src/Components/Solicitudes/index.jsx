@@ -2,10 +2,11 @@ import Card from "../Card";
 import Butt from "../buttons/Button";
 import { Modal } from "../../Modal";
 import DetalleSolicitud from "../DetalleSolicitud";
-import { CardContext } from "../../CardContext";
+import { CardContext, useUser } from "../../CardContext";
 import { useContext, useState, useEffect } from "react";
 
 const Solicitudes = () => {
+  const { userId } = useUser();
   const context = useContext(CardContext);
   const [filter, setFilter] = useState("En espera");
   const [button3, setButton3] = useState("highlighted");
@@ -13,7 +14,14 @@ const Solicitudes = () => {
   const [button5, setButton5] = useState("");
   useEffect(() => {
     // Hacer la solicitud a la API para obtener el historial de solicitudes
-    fetch("http://localhost:80/backend/historial_api.php")
+    fetch("http://localhost:80/backend/historial_api_usuario.php", {
+      
+    method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userId: userId }),
+    })
       .then((response) => response.json())
       .then((data) => context.setHistorial(data))
       .catch((error) => console.error("Error fetching historial:", error));

@@ -5,6 +5,7 @@ import DetalleSolicitud from "../DetalleSolicitud";
 import { CardContext } from "../../CardContext";
 import { useContext, useState, useEffect } from "react";
 
+
 const Historial = () => {
   const context = useContext(CardContext);
   const [filter, setFilter] = useState("En espera");

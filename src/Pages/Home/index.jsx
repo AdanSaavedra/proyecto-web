@@ -5,7 +5,12 @@ import { useUser } from "../../CardContext";
 
 const Home = () => {
   const { type } = useUser();
-  return type == "1" ? <User /> : <Admin />;
+  return(
+    <>
+    {type == "1" ? <User /> : null}
+    {type == "2" ? <Admin /> : null}
+    </>
+  );
 };
 
 export default Home;

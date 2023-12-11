@@ -14,7 +14,7 @@ const Solicitudes = () => {
   const [button5, setButton5] = useState("");
   useEffect(() => {
     // Hacer la solicitud a la API para obtener el historial de solicitudes
-    fetch("http://localhost:80/backend/historial_api_usuario.php", {
+    fetch("http://localhost:80/backend/historial_api.php", {
       
     method: "POST",
       headers: {
